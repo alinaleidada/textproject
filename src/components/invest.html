@@ -1,0 +1,298 @@
+<div class="container inverst" style="position: relative;">
+    <!--标题 -->
+    <h4>投资列表</h4>
+    <ul class="nav nav-pills">
+        <li class="title">标的状态</li>
+        <li role="presentation" class="active">
+            <a href="">全部</a>
+        </li>
+        <li role="presentation">
+            <a href="">招标中</a>
+        </li>
+        <li role="presentation">
+            <a href="">还款中</a>
+        </li>
+    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>借款人</td>
+                <td>借款标题</td>
+                <td>年利率</td>
+                <td>金额</td>
+                <td>还款方式</td>
+                <td>进度</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody id="tbody1">
+            <!--后台示例数据-->
+            
+        </tbody>
+    </table>
+    <p class="pageCon"> 
+        <button class="first">首页</button>        
+        <button class="pre">上一页</button>
+        <span class="l el">...</span>
+        <span class="pag">
+            <span class="list"> 
+                
+
+            </span> 
+        </span> 
+        <span class="r el">...</span>
+        <button class="next">下一页</button>
+        <button class="last">尾页</button>                
+    </p>
+</div>
+<style>
+    .pageCon{
+        display: flex;
+        margin-left: 245px;
+    }
+    .pageCon span.pag{
+    position: relative;
+    height: 32px;
+    width: 240px;
+    overflow: hidden;
+    }
+    .pageCon span.pag .list{
+        position: absolute;
+        top:0;
+        left:0;
+        display: inline-block;
+        height: 32px;    
+    }
+    .pageCon>span.l{
+        visibility: hidden;
+    }
+    .pageCon span.el{
+        margin: 12px 5px 0;
+    }
+    .pageCon i{
+        float: left;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #fafafa;
+        border: 1px solid #e6e6e6;
+        margin-right: 8px;
+        font-style: normal;
+        cursor: pointer;
+        user-select: none;    
+    }
+    .pageCon i.current{
+        color:#f4290d;
+        border: none;
+        background-color: #fff;
+        width: 32px
+    }
+    .pageCon button{
+        padding: 0;
+        outline: none;
+        border: none;
+        border: 1px solid #e6e6e6;
+        height: 32px;
+        width: 65px;
+        background-color: #fafafa;
+        cursor: pointer;
+        user-select: none;
+    }
+    .pageCon button.pre{
+        visibility: hidden;
+    }
+    #page{
+        display: flex;
+        justify-content: center;
+        width: 200px;
+        overflow: hidden;
+    }
+    #page li{
+        margin: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: #ccc;
+        line-height: 20px;
+        text-align: center;
+    }
+    h4{
+        margin-top: 10px;
+    }
+    .inverst .nav{
+        display: flex;
+        margin: 10px;
+    }
+    .inverst .nav li.title{
+        line-height: 40px;
+        margin-right: 30px;
+    }
+    .inverst .nav li:not(.title){
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    .inverst .nav li a{
+        color:#000;
+    }
+    .inverst .nav li.active a{
+        background: #ccc !important;
+        color: #fff;
+    }
+</style>
+<script>
+        var pagNum = location.hash.split('/')[2] || 1;
+        
+        //数据渲染
+        $.ajax({
+            url:'http://172.16.7.254/borrow.php?act=read',
+            type:"GET",
+            data:{'order':"asc","paginate":1,"page":pagNum},
+            success:function(res){
+                    
+                    var str = '';
+                    if(res.errcode==0){
+                        for(let i=0;i<res.data.length;i++){
+                            str +=`
+                                <tr>
+                                    <td class="ID">${res.data[i].id}</td>
+                                    <td>${res.data[i].username}</td>
+                                    <td>${res.data[i].title}</td>
+                                    <td class="text-info"> ${res.data[i].interest}%</td>
+                                    <td class="text-info">${res.data[i].borrowmoney}</td>
+                                    <td>
+                                        按月分期还款
+                                    </td>
+                                    <td>
+                                        <div class="">
+                                            78.00%
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger btn-sm" id="checkOut" href="#/invest/details/${res.data[i].id}">查看</a>
+                                    </td>
+                                    
+                                </tr>
+                                `
+                        }
+                    }else{
+                        str = "暂无数据"
+                    }
+                    $('#tbody1').html(str)
+                //页码打印
+                var pagecount = res.pagecount;
+                
+                var pg = '';
+                for(let j=1;j<=pagecount;j++){
+                    
+                    pg+=`<a href="#/invest/${j}"><i>${j}</i></a>`
+
+                }
+                $('.list').html(pg);
+                //评论翻页功能
+                //单击i标签改变样式
+                $('.list a').on('click',function(){
+                    var index = $(this).index()+1
+                    location.hash=`#/invest/${index}`;
+                    var numhash = location.hash.split('/')[2];
+                    $('.list a').removeClass('current');
+                    if(index==numhash){
+                        $(this).find('i').addClass('current')
+                    }
+
+                })
+                //下一页按钮
+                $('.next').click(function(){
+                    //获取hash[2]
+                    var numhash = location.hash.split('/')[2];
+                    numhash++;
+                    location.hash=`#/invest/${numhash}`;
+
+                    setMiddle(numhash)
+                    
+
+                })
+                //上一页按钮
+                $('.pre').click(function(){
+                    //获取hash[2]
+                    var numhash = location.hash.split('/')[2];
+                    numhash--;
+                    location.hash=`#/invest/${numhash}`;
+
+                    setMiddle(numhash)
+                    
+                })
+                //首页跳转
+                $('.first').click(function(){
+                    location.hash=`#/invest/0`;
+                    var numhash = location.hash.split('/')[2];                      
+                    setMiddle(numhash)
+                })
+                //尾页跳转
+                $('.last').click(function(){
+                    location.hash=`#/invest/${pagecount}`;  
+                    var numhash = location.hash.split('/')[2];                      
+                    setMiddle(numhash)       
+                })
+                //当前选中i标签在中央 并且判定是否显示前后按钮和缩略符号
+                function setMiddle(num) {
+                    //获取长度
+                    let l = $('.list i').length;
+
+                    //获取当前hash
+                    let nowIndex = num;
+
+                    if (nowIndex >= 2 && nowIndex <= (l - 4)) {
+
+                        let pLeft = (2 - nowIndex) * 40 + 'px';
+                        $('.list').css({ 'left': pLeft });
+                        $('.r').css({ 'visibility': 'visible' });
+                    } else if (nowIndex > (l - 4)) {
+
+                        let pL = (6 - l) * 40 + 'px';
+                        $('.list').css({ 'left': pL });
+                        $('.r').css({ 'visibility': 'hidden' });
+                    } else {
+
+                        $('.list').css({ 'left': 0 });
+                        $('.r').css({ 'visibility': 'visible' });
+                    }
+
+                    //显示隐藏下一页按钮
+                    if (nowIndex === l - 1) {
+                        $('.next').css({ 'visibility': 'hidden' });
+                    } else {
+                        $('.next').css({ 'visibility': 'visible' });
+                    }
+                    //显示隐藏上一页按钮
+                    if (nowIndex > 0) {
+                        $('.pre').css({ 'visibility': 'visible' });
+                    } else {
+                        $('.pre').css({ 'visibility': 'hidden' });
+                    }
+
+                    //显示隐藏左边缩略图
+                    if (nowIndex > 2) {
+                        $('.l').css({ 'visibility': 'visible' });
+                    } else {
+                        $('.l').css({ 'visibility': 'hidden' });
+                    }
+
+
+                }
+                }
+        })
+            
+        
+
+
+
+
+
+
+        
+            
+    
+        
+        
+</script>

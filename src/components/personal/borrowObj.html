@@ -1,0 +1,66 @@
+<h4>借款项目</h4>
+<table class="borrowinfo table row">
+    <thead>
+        <tr>
+            <th class="col-md-2">标题</th>
+            <th class="col-md-2">时间</th>
+            <th class="col-md-2">借款金额</th>
+            <th class="col-md-1">期限</th>
+            <th class="col-md-1">利率</th>
+            <th class="col-md-4">状态</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <a href="">江湖救急</a>
+                <strong>信</strong>
+            </td>
+            <td>2016-01-02</td>
+            <td>2000</td>
+            <td>12月</td>
+            <td>12%</td>
+            <td>
+                <span style="color:#ccc">待发布</span>
+                <span style="color:#3c763d">招标中</span>
+                <span style="color:#3c763d">满标未审核</span>
+                <span style="color:#3c763d">还款中</span>
+                <span style="color:#a94442">招标拒绝</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<style>
+    /* 借款项目 */
+    h4{
+        background-color: #f5f5f5;
+        padding: 10px 15px;
+        margin: 0;
+    }
+    .borrowinfo{
+        padding: 0;
+        margin: 0 auto;
+        
+    }
+    .borrowinfo tbody tr:nth-child(odd){
+        background-color: #f5f5f5;
+    }
+    .borrowinfo td:first-child strong{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #337ab7;
+        color: #fff;
+        text-align: center;
+    }
+    .borrowinfo td:last-child{
+        padding: 8px 0 !important;
+        
+    }
+    .borrowinfo td:last-child span{
+        font-weight: bolder;
+    }
+
+
+</style>

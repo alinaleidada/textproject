@@ -1,0 +1,255 @@
+<div class="container">
+    <!-- 广告图 -->
+    <div class="banner row">
+        <div class="col-md-6">
+            <a><img src="../../assets/imgs/zy-1.jpg" alt=""></a>
+        </div>
+        <div class="col-md-6">
+            <a><img src="../../assets/imgs/zy-2.jpg" alt=""></a>
+        </div>
+    </div>
+    <!-- 模块二 -->
+    <div class="mode-2">
+    
+        
+
+
+
+
+        <div class="left controlicon"></div>
+        <div class="right controlicon"></div>
+        <div class="int">
+            <img src="../../assets/imgs/help_four.png" style="margin-top:30px;">
+        </div>
+        <div class="line">
+            <ul class="control">
+                <li class="part-1 active">
+                    <span class="active"></span>
+                </li>
+                <li class="part-2">
+                    <span></span>
+                </li>
+                <li class="part-3">
+                    <span></span>
+                </li>
+                <li class="part-4">
+                    <span></span>
+                </li>
+            </ul>
+        </div>
+        <div class="lunbo">
+            <ul class="list">
+                <li>
+                    <img src="../../assets/imgs/lb-1.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../../assets/imgs/lb-2.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../../assets/imgs/lb-3.jpg" alt="">
+                </li>
+                <li>
+                    <img src="../../assets/imgs/lb-4.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    
+
+</div>
+
+<style>
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* 模块二样式 */
+    .banner{
+        margin-top: 30px;
+    }
+    .banner img{
+        width: 450px;
+        height: auto;
+    }
+    .banner div{
+        text-align: center;
+    }
+    .int{
+        text-align: center;
+    }
+    .mode-2{
+        position: relative;
+    }
+
+
+
+
+
+
+
+
+    /* 模块二样式 */    
+    .control{
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        
+    }
+    
+    .line{
+        border-bottom: 1px solid #cbebfb;
+    }
+    .control li{
+        width: 138px;
+        height: 122px;
+        position: relative;
+        cursor: pointer;
+    }
+    .control li span{
+        position: absolute;
+        display: inline-block;
+        width: 12px;
+        height: 8px;
+        background: url(../../assets/imgs/jianjian.jpg) no-repeat;
+        background-color: #fff;
+        bottom: -3px;
+        left: 65px;
+        display: none;
+    }
+    .control li span.active{
+        display: inline-block;
+    }
+    .part-1{
+        background: url(../../assets/imgs/part-1.png) no-repeat center;
+    }
+    .part-1.active{
+        background: url(../../assets/imgs/part-11.png) no-repeat center;
+    }
+    .part-2{
+        background: url(../../assets/imgs/part-2.png) no-repeat center;
+    }
+    .part-2.active{
+        background: url(../../assets/imgs/part-22.png) no-repeat center;
+    }
+    .part-3{
+        background: url(../../assets/imgs/part-3.png) no-repeat center;
+    }
+    .part-3.active{
+        background: url(../../assets/imgs/part-33.png) no-repeat center;
+    }
+    .part-4{
+        background: url(../../assets/imgs/part-4.png) no-repeat center;
+    }
+    .part-4.active{
+        background: url(../../assets/imgs/part-44.png) no-repeat center;
+    }
+    .lunbo{
+        width: 490px;
+        min-width: 490px;
+        margin: 40px auto;
+        height: 312px;
+        background-color: #ccc;
+        overflow: hidden;
+        position: relative;
+    }
+    .lunbo .list{
+        display: flex;
+        position: absolute;
+        left:0;
+        width: 1960px;
+    }
+    .controlicon{
+        position: absolute;
+        width: 14px;
+        height: 24px;
+        background: url(../../assets/imgs/control.png) no-repeat;
+        bottom: 132px;
+        cursor: pointer;
+    }
+    .left{
+        background-position: 0 0;
+        left: 270px;
+    }
+    .right{
+        background-position: -13px 0;
+        right: 270px;
+    }
+</style>
+<script>
+    //轮播图播放
+    $('.control li').click(function(){
+        //获取到index值
+        var index = $(this).index();
+        // console.log(index);
+        $(this).addClass('active').siblings('li').removeClass('active');
+        // 小箭头切换
+        $('.control li span').removeClass('active');
+        $('.control li span').eq(index).addClass('active');
+        var leftDis = -(index*490)+"px";
+        // console.log(leftDis)
+        //手动轮播 切换
+        $('.list').animate({"left":leftDis},600)
+    })
+    //上下点击切换
+    
+    $('.left').click(function(){
+        var index = $('.control li.active').index();
+        index--;
+        $('.control li').eq(index).addClass('active').siblings('li').removeClass('active');
+        if(index<0){
+            index=3
+        }
+        var leftDis = -(index*490)+"px";
+        // console.log(leftDis)
+        //手动轮播 切换
+        $('.list').animate({"left":leftDis},600)
+    })
+    $('.right').click(function(){
+        var index = $('.control li.active').index();
+        index++;
+        
+        if(index>3){
+            index=0
+        }
+        $('.control li').eq(index).addClass('active').siblings('li').removeClass('active');
+        var leftDis = -(index*490)+"px";
+        // console.log(leftDis)
+        //手动轮播 切换
+        $('.list').animate({"left":leftDis},600)
+    })
+    //自动播放
+    var timer = null;
+
+    timer = setInterval(function(){
+        clearInterval(timer);
+        var index = $('.control li.active').index();
+        index++;
+        
+        if(index>3){
+            index=0
+        }
+        $('.control li').eq(index).addClass('active').siblings('li').removeClass('active');
+        var leftDis = -(index*490)+"px";
+        // console.log(leftDis)
+        //手动轮播 切换
+        $('.list').animate({"left":leftDis},600)
+    },2000)
+
+
+</script>

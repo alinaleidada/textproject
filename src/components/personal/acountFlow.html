@@ -1,0 +1,99 @@
+<!-- 账户流水 -->
+<h4>账户流水</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>发生额</th>
+            <th>账户余额</th>
+            <th>可用余额</th>
+            <th>冻结金额</th>
+            <th>发生时间</th>
+            <th>类型</th>
+        </tr>
+    </thead>
+    <tbody> 				
+        <tr>
+            <td>8.53</td>
+            <td>2,451.43</td>
+            <td>881.43</td>
+            <td>1,570.00</td>
+            <td>2017-05-20 16:02:34</td>
+            <td>收款</td>
+        </tr>
+        <tr>
+            <td>-0.05</td>
+            <td>2,442.90</td>
+            <td>872.90</td>
+            <td>1,570.00</td>
+            <td>2017-05-31 06:02:21</td>
+            <td>利息管理费</td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="echarts" style="width: 600px;height:400px;"></div>
+
+<style>
+    /* 账户流水 */
+    h4{
+        background-color: #f5f5f5;
+        padding: 16px 15px;
+        margin: 0;
+        font-size: 14px;
+    }
+
+</style>
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('echarts'));
+        function num (min,max){
+            return Math.floor(Math.random()*(max-min+1)+min);
+        }
+        option = {
+            title:{
+                text:"账户余额情况",
+                left:250
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                x: 'left',
+                data:['可用余额','冻结金额']
+            },
+            series: [
+                {
+                    name:'访问来源',
+                    type:'pie',
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:[
+                        {value:num (10000,30000), name:'可用余额'},
+                        {value:num (4000,10000), name:'冻结金额'}
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+</script>

@@ -1,0 +1,225 @@
+<div class="title">
+    <h3>信用借款</h3>
+    <p>
+        授信额度：<span style="color: #8a2222; margin-right: 50px;">2000</span>
+        可借金额：<span style="color: #8a2222">2000</span>
+    </p>
+</div>
+<!-- 数据表单 -->
+<div class="data" style="position: relative;">
+    <form class="form-inline">
+        <div class="form-group part">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">借款金额：</div>
+                <input type="text" class="form-control" placeholder="请输入借款金额（整数）" id="sum">
+                <div class="input-group-addon">元</div>
+            </div>
+        </div>
+        <div class="form-group part">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">借款利息：</div>
+                <input type="text" class="form-control" placeholder="请输入利息" id="interest">
+                <div class="input-group-addon">%</div>
+            </div>
+        </div>
+        <div class="form-group part">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">借款期限：</div>
+                <select name="" id="limit" class="form-control" style="width:196px" placeholder="请选择借款期限（月）">
+                    <option value="1">1</option>
+                    <option value="3" selected>3</option>
+                    <option value="6">6</option>
+                    <option value="9">9</option>
+                    <option value="12">12</option>
+                    <option value="24">24</option>
+                </select>
+                <div class="input-group-addon">月</div>
+            </div>
+        </div>
+        <div class="form-group part">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">还款方式：</div>
+                <input type="radio" style="margin:8px;margin-bottom: 0;">按月分期
+                <input type="radio" style="margin:8px;margin-bottom: 0;margin-left: 30px">按月到期
+            </div>
+        </div>
+        <div class="form-group part">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">最小投标：</div>
+                <input type="text" class="form-control" placeholder="请输入最小投标数" id="inMoney">
+                <div class="input-group-addon">元</div>
+            </div>
+        </div>
+        <div class="form-group part">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">投标奖金：</div>
+                <input type="text" class="form-control" placeholder="" id="inrate">
+                <div class="input-group-addon">%</div>
+            </div>
+        </div>
+        <div class="form-group part">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">投标天数：</div>
+                <input type="text" class="form-control" placeholder="请输入投标天数" id="daylimit">
+                <div class="input-group-addon">天</div>
+            </div>
+        </div>
+        <div class="form-group part">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">借款标题：</div>
+                <input type="text" class="form-control" placeholder="" style="width: 235px;" id="btitle">
+            </div>
+        </div>
+        <div class="part last">
+            <!-- <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group"> 
+                <div class="input-group-addon des">借款描述：</div>
+                <textarea name="" id="des" style="width: 235px;"></textarea>
+            </div> -->
+            <div class="des">借款描述</div>
+            <textarea name="" id="des" style="min-width:235px;max-width: 300px;height: 34px;line-height: 34px;text-indent: 1em;" placeholder="请输入描述"></textarea>
+        </div>
+        <div class="part last">
+            <button class="btn btn-primary" type="button" id="dataBtn">提交</button>
+        </div>
+    </form>
+    <div class="count">
+        <h4>相关费用</h4>
+        <p>
+            <span class="text-info">利息：</span>
+            <span class="el-borrow-cost" id="cost01">--</span>
+        </p>
+        <p>
+            <span class="text-info">奖金：</span>
+            <span class="el-borrow-cost" id="cost02">--</span>
+        </p>
+        <p>
+            <span class="text-info">管理费：</span>
+            <span class="el-borrow-cost" id="cost03">--</span>
+        </p>
+    </div>
+</div>
+
+<style>
+
+    .title{
+        padding: 20px;
+        background-color: #fafafa;
+
+    }
+    .title h3{
+        margin-bottom: 20px;
+        color: #09d;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+    .part{
+        display: block !important;
+        width: 50%;
+        margin: 10px;
+    }
+    .last{
+        display: flex !important;
+    }
+    .last .des{
+        height: 34px;
+        text-align: center;
+        line-height: 34px;
+        padding: 0 19px;
+        background-color: #eee;
+        color: #555;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    .last textarea{
+        border: 0;
+        border: 1px solid #ccc;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    .count{
+        width: 280px;
+        padding: 20px 30px;
+        position: absolute;
+        top:25px;
+        right: 30px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px 10px #ccc;
+    }
+</style>
+<script>
+    //注册事件计算利息等值  input事件
+    $('#sum,#interest,#limit').on('input',function(){
+        var money = parseInt($('#sum').val());
+        var rate = parseInt($('#interest').val());
+        var month = parseInt($('#limit').val());
+        var result = money*rate/100*month/12;
+        if(isNaN(result)){
+            result='--'
+        }else{
+            result=result.toFixed(2)   
+        }
+             
+        $('#cost01').html(result);
+    })
+    $('#inMoney,#inrate,#daylimit').on('input',function(){
+        var x = parseInt($('#inMoney').val());
+        var y = parseInt($('#inrate').val());
+        var z = parseInt($('#daylimit').val());
+        var result = x*y/100*z/365;
+        if(isNaN(result)){
+            result='--'
+        }else{
+            result=result.toFixed(2)   
+        }
+        $('#cost02').html(result);        
+    })
+    //提交数据
+    $('#dataBtn').on('click',function(){
+        var userid = sessionStorage.getItem('userID');
+        var money = sum.value;	
+        var currentRate = interest.value;	
+        var borrowtime = limit.value;	
+        var minbid = inMoney.value;	
+        var bonus = inrate.value;	
+        var days = daylimit.value;	
+        var title = btitle.value;	
+        var info = des.value;
+        
+        $.ajax({
+            url:'http://172.16.7.254/borrow.php?act=create',
+            type:'POST',
+            data:{"userid":userid,
+            "money":money,
+            "currentRate":currentRate,
+            "borrowtime":borrowtime,
+            "minbid":minbid,
+            "bonus":bonus,
+            "days":days,
+            "title":title,
+            "info":info,
+            "repaytype":0
+            },
+            success:function(res){
+                if(res.errcode===0){
+                    alert('提交成功');
+                    window.location.hash="#/invest";
+                }else{
+                    alert('输入有误，请检查后重新输入');                    
+                }
+            }
+        })
+    })
+</script>

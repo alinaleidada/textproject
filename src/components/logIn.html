@@ -1,0 +1,387 @@
+<!-- 注册登录 -->
+<div class="container box">
+    <div class="cow">
+        <div class="ewm col-md-7">
+            <img src="../../assets/imgs/dlewm.png" alt="">
+        </div>
+        <div class="dlb col-md-5 zck">
+            <div class="title">
+                <h4>快速注册</h4>
+                <span>已有账号？
+                    <a class="dljm">立即登录</a>
+                </span>
+            </div>
+            <form method="get" name="zc" class="acbg">
+                <p class="part-1">
+                    <span>
+                        <img src="../../assets/imgs/phone.png" alt="">
+                    </span>
+                    <input type="text" placeholder="请输入手机号" id="zcName">
+                </p>
+                <p class="part-2" style="position: relative;">
+                    <span>
+                        <img src="../../assets/imgs/password.png" alt="">
+                    </span>
+                    <input type="password" placeholder="请输入6-16位密码" id="zcpwd">
+                    <i class="">
+                    </i>
+                </p>
+                <p class="part-3">
+                    <span>
+                        <img src="../../assets/imgs/lock.png" alt="">
+                    </span>
+                    <input type="text" name="userName">
+                </p>
+                <button class="btn1 btn btn-primary">获取验证码</button>
+                <div class="choose">
+                    <span class=""><img src="../../assets/imgs/xiangxia.png" alt=""></span>
+                    请输入邀请人用户姓名（选填）
+                </div>
+                <p class="part-4">
+                    <span>
+                        <img src="../../assets/imgs/friend.png" alt="">
+                    </span>
+                    <input type="text" name="userName" placeholder="请输入邀请人用户姓名">
+                </p>
+                <div class="read">
+                    <input type="checkbox" name="" id="agree">
+                    <p> 我已阅读并同意<a>《注册协议》</a><a>《风险揭示书》</a></p>
+                </div>
+                <p class="part-5">
+                    <button class="btn-zc btn2 btn btn-default" disabled type="button" id="tjzc">提交注册</button>
+                </p>
+            </form>
+        </div>
+        <div class="dlb col-md-5 zhuce">
+            <div class="cat">
+                <img src="../../assets/imgs/cat-1.png" alt="">
+            </div>
+            <form method="get" name="zc" class="acbg">
+                <p class="part-1">
+                    <span>
+                        <img src="../../assets/imgs/phone.png" alt="">
+                    </span>
+                    <input type="text" name="userName" placeholder="请输入手机号/用户名/邮箱" id="userName" class="username">
+                </p>
+                <p class="part-2" style="position: relative;">
+                    <span>
+                        <img src="../../assets/imgs/password.png" alt="">
+                    </span>
+                    <input type="password" name="userName" placeholder="请输入密码" id="pwd" class="dlpwd">
+                    <i class="">
+                    </i>
+                </p>
+                <div class="remem">
+                    <span><input type="checkbox" name="rem" id="">记住用户名</span>
+                    <span><a class="zcym">立即注册</a>/
+                        <a>忘记密码?</a>
+                    </span>
+                </div>
+                <p class="part-5">
+                    <button class="btn-dl btn2 btn btn-primary" id="logInbtn" type="button">登录</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+
+    /* 注册登录样式 */
+    h4{
+        color: skyblue;
+        font-size: 20px;
+    }
+    
+    .box{
+        margin-top: 20px;
+    }
+    .ewm img{
+        margin-top: 145px;
+    }
+    .zck{
+        display: none;
+    }
+    .dlb{
+        box-sizing: border-box;
+        padding: 10px 80px 10px 10px;
+        background: #fafafa;
+        height: 410px;
+    }
+    .title{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    .acbg>p{
+        line-height: 46px;
+        border: 1px solid #ccc;
+        padding: 0 10px;
+        background-color: #fff;
+    }
+    .acbg p span{
+        width: 46px;
+        height: 46px;
+    }
+    .acbg p span img{
+        width: 26px;
+        margin-right: 5px;
+    }
+    .acbg p input{
+        width: 320px;
+        height: 46px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        text-indent: 10px;
+    }
+    p.part-2 i{
+        display: inline-block;
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        width: 20px;
+        height: 14px;
+       cursor: pointer;
+        background: url(../../assets/imgs/eye-hide.png) no-repeat center;
+        background-size: 100%;
+    }
+    p.part-2 i.eyeS{
+        background: url(../../assets/imgs/eye.png) no-repeat center;
+        background-size: 100%;
+        
+    }
+    p.part-3{
+        width: 240px;
+    }
+    .acbg p.part-3 input{
+        width: 180px;
+    }
+    .btn1{
+        position: absolute;
+        right: 105px;
+        top: 175px;
+    }
+    .choose{
+        color: #ccc;
+        line-height: 20px;
+        margin-bottom: 10px;
+        padding-left: 5px;
+    }
+    .choose span{
+        cursor: pointer;
+    }
+    .choose span.up img{
+        transform: rotate(180deg)
+    }
+    .read{
+        padding: 0 5px;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .read p{
+        margin-left: 5px;
+    }
+    .part-4{
+        display: none;
+    }
+    .part-5{
+        border: 0 !important;
+        padding: 0 !important;
+    }
+    .part-5 .btn2{
+        width: 385px;
+        height: 40px;
+    }
+    .cat{
+        text-align: center;
+        background: url(../../assets/imgs/shadow.png) no-repeat center bottom;
+    }
+    .cat img{
+        width: 136px;
+    }
+    .remem{
+        display: flex;
+        justify-content: space-between;
+        margin: 16px 0;
+        padding: 0 4px;
+    }
+    .remem span{
+        display: inline-block;
+        height: 16px;
+        line-height: 16px;
+        position: relative;
+    }
+    .remem span:first-child{
+        padding-left: 18px;
+    }
+    .remem span input{
+        position: absolute;
+        top:-2px;
+        left: 2px;
+        vertical-align: middle;
+    }
+    
+</style>
+
+<script>
+    $(function () {
+        
+        // 显示关闭明文密码
+        $('.part-2 i').on('click', function () {
+            //切换图标
+            $(this).toggleClass('eyeS');
+            if ($(this).hasClass('eyeS')) {
+                $('#pwd').attr('type', 'text')
+            } else {
+                $('#pwd').attr('type', 'password')
+            }
+        })
+
+        //切换推荐人显示
+        $('.choose span').on('click', function () {
+            $(this).toggleClass('up');
+            if ($(this).hasClass('up')) {
+                $('.part-4').show()
+            } else {
+                $('.part-4').hide()
+            }
+        })
+
+        //按钮禁用解禁
+        $('#agree').on('click', function () {
+            var status = $(this).prop('checked');
+            if (status) {
+                $('.btn-zc').addClass('btn-primary').prop('disabled', false)
+            } else {
+                $('.btn-zc').removeClass('btn-primary').prop('disabled', true)
+            }
+        })
+        //注册跳转登录页面
+        $('.dljm').on('click', function () {
+            $(this).closest('.dlb').hide();
+            $(this).closest('.dlb').siblings('.dlb').fadeIn('fast');
+        })
+
+        //登录页面跳转回注册
+        $('.zcym').on('click', function () {
+            $(this).closest('.dlb').hide();
+            $(this).closest('.dlb').siblings('.dlb').fadeIn('fast');
+        })
+        //输入框切换 猫咪变化
+        //密码
+        $('.dlpwd').on('focus', function () {
+            $('.cat img').attr('src', '../../assets/imgs/wyj.gif')
+        }).on('blur', function () {
+            $('.cat img').attr('src', '../../assets/imgs/cat-1.png')
+        })
+        //账号
+        $('.userName').on('focus', function () {
+            $('.cat img').attr('src', '../../assets/imgs/ditou.gif')
+        }).on('blur', function () {
+            $('.cat img').attr('src', '../../assets/imgs/cat-1.png')
+        })
+        //注册表单验证
+        //定义对象用于最后按钮检测
+        var regStatus = {
+            zcName: false,
+            zcpwd: false,
+        }
+        //用户名
+        $('#zcName').on('blur', function () {
+            var reg = /^[0-9]{11}$/
+            if (reg.test($(this).val())) {
+                $(this).css('border', '1px solid #0a0');
+                regStatus.zcName = true;
+            } else {
+                $(this).css('border', '1px solid #f00');
+                regStatus.zcName = false;
+            }
+        })
+        $('#zcpwd').on('blur', function () {
+            var reg = /^[0-9a-z\!\@\#\$\%\^\&]{6,16}$/i;
+            if (reg.test($(this).val())) {
+                $(this).css('border', '1px solid #0a0');
+                regStatus.zcpwd = true;
+            } else {
+                $(this).css('border', '1px solid #f00');
+                regStatus.zcpwd = false;
+            }
+        })
+        $('#tjzc').on('click', function () {
+            var flag = true;
+            //遍历储存数据对象 如果存在false  则 return false
+            $.each(regStatus, function (i, v) {
+                if (!v) {
+                    $('#' + i).css('border', '1px solid #f00');
+                    flag = false;
+                    return false;
+                }
+            })
+            if (flag) {
+                $.ajax({
+                    url: 'http://172.16.7.254/users.php?act=reg',
+                    type: "post",
+                    data: { "username": zcName.value, "pwd": zcpwd.value },
+                    success: function (res) {
+                        console.log(res)
+                        if (res.errcode == 0) {
+                            alert('注册成功');
+                            $('.dljm').click();
+                        }
+                    }
+                })
+            }
+        })
+
+        //登录
+
+        $('#logInbtn').on('click', function () {
+            $.ajax({
+                url: 'http://172.16.7.254/users.php?act=login',
+                type: "POST",
+                data: { "username": userName.value, "pwd": pwd.value },
+                success: function (DATA) {
+                    // console.log(DATA)
+                    if (DATA.errcode == 0) {
+                        //全局变量储存id
+                        // window.userId = DATA.data.id;
+                        //会话储存
+                        sessionStorage.setItem('userID',DATA.data.id);
+                        
+                        window.location.hash = '#/personal';
+                    } else {
+                        alert('用户名或密码错误')
+                    }
+                    
+                }
+            
+            })
+            
+        })
+        //验证是否存在
+        $('#zcName').on('blur', function () {
+
+            $.ajax({
+                url: 'http://172.16.7.254/users.php?act=exists',
+                type: "GET",
+                data: { "username": zcName.value },
+                success: function (res) {
+
+                    if (res.result == 1) {
+                        alert('用户名已存在');
+                        $('#agree').prop('disabled', true);
+                        $('#tjzc').prop('disabled', true)
+                    } else {
+                        $('#agree').prop('disabled', false);
+                        $('#tjzc').prop('disabled', false)
+                    }
+                }
+            })
+
+        })
+        
+    })
+    
+
+    
+</script>
